@@ -8,14 +8,43 @@ var config = {
     messagingSenderId: "893943462331"
 };
 firebase.initializeApp(config);
+
+// A function that does an AJAX call
+function judgesInfo(judge) {
 $.ajax({
-    url: "https://datacatalog.cookcountyil.gov/resource/69z9-nyig.json",
+    url: "https://datacatalog.cookcountyil.gov/resource/69z9-nyig.json?position=Judge&last_name=" + judge,
     type: "GET",
     data: {
         "$limit" : 5000,
         "$$app_token" : "z19GcEXHUsdQi8X7j8doySfMi"
     }
 }).done(function(data) {
-    alert("Retrieved " + data.length + " records from the dataset!");
-    console.log(data);
-});
+
+   var fullName =data[0].first_name + " " + data[0].last_name;
+
+    //  Dynamically creating a new row for the table
+   var tableRow = $("<tr>");
+   //   Dynamically creating a cell and, inputting text from our object, and appending that to our table row   
+   var judgeDivision = $("<td>").text(data[0].division);
+     tableRow.append(judgeDivision);
+
+
+   var judgeName = $("<td>").text(fullName);
+    tableRow.append(judgeName);
+
+   var judgeLocation = $("<td>").text(data[0].location_1_location);
+      tableRow.append(judgeLocation);
+
+   // Finding our table element and appending the row we just made
+     $("#employeeTable").append(tableRow);
+ });
+}
+//   on Click that grabs the text from the Input box and calls our judgesInfo() function
+$("#select-artist").on("click", function(event) {
+
+    event.preventDefault();
+    var lastName = $("#artist-input").val().trim();
+    console.log(lastName);
+
+    judgesInfo(lastName);
+})
