@@ -1,0 +1,133 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Arial', serif;
+
+}
+
+.nav {
+	background-color: #595959;
+	color: #ffffff;
+	list-style: none;
+	text-align: center;
+	padding: 20px 0 20px 0;
+}
+
+.nav > li {
+	display: inline-block;
+	padding: 0 25px 0 25px;
+}
+
+.nav >li>a{
+	text-decoration: none;
+	color: #ffffff;
+}
+
+.nav > li > a:hover {
+	color: #c1c1c1;
+}
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+}
+
+/* Add some content at the bottom of the video/page */
+.content {
+    position: fixed;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;
+}
+
+/* Style the button used to pause/play the video */
+#myBtn {
+    width: 200px;
+    font-size: 18px;
+    padding: 10px;
+    border: none;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+}
+
+#myBtn:hover {
+    background: #ddd;
+    color: black;
+}
+
+
+body { background: #0f0f0f; }
+
+header {
+ position: relative;
+ height: 500px;
+ min-height: 500px;
+ width: 100%;
+ background-size: cover !important;
+ -webkit-background-size: cover !important;
+ text-align: center;
+ overflow: hidden;
+}
+
+header video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -100;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+header:before {
+ content: '';
+ display: inline-block;
+ vertical-align: middle;
+ height: 100%;
+}
+
+header .banner {
+ display: inline-block;
+ vertical-align: center;
+ margin: 0 auto;
+ width: 85%;
+ padding-bottom: 30px;
+ text-align: center;
+ font:24px 'opensans-bold', sans-serif;
+ font-weight: bold;
+}
+
+header .banner-text {
+ color: #f5f5f5;
+ width: 100%;
+}
+
+section {
+ background: #2B2B2B;
+ padding-top: 96px;
+ padding-bottom: 66px;
+ overflow: hidden;
+ color:#fff;
+ text-align: center;
+}
+
+footer {
+ position: relative;
+ right: 0;
+ bottom: 0;
+ left: 0;
+ padding: 1rem;
+ background-color: #0f0f0f;
+ text-align: center;
+ color:#fff;
+ text-align: center;
+}
