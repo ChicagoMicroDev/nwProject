@@ -17,7 +17,7 @@
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
-    <script>
+    <!-- <script>
         // Initialize Firebase
         var config = {
             apiKey: "AIzaSyBnRkw5tZYUIFDrUmK5O8xgbgTtn4WQOM8",
@@ -29,7 +29,7 @@
         };
         firebase.initializeApp(config);
         var database = firebase.database();
-    </script>
+    </script> -->
 </head>
 
 <body>
@@ -66,7 +66,7 @@
 
                     </tr>
                     </thead>
-                    <tbody id="employeeTable">
+                    <tbody id="judgeTable">
                     <tr>
                         <td> Molesting perverts </td>
                         <td> Harvey Weinstein</td>
@@ -87,16 +87,18 @@
 
     <hr>
     <!-- Artist Select Box -->
-    <form id="artist-form">
+    <form id="judgeForm" action="/action_page.php">
 
         <!-- Label for Text Box -->
-        <label for="artist-input">Choose Your Judge</label>
+        <label for="artist-input">Choose Your Judge</label><br>
 
         <!-- Text Input Box -->
-        <input type="text" id="artist-input"><br>
+        <input type="text" id="firstName"><br>
+
+        <input type="text" id="lastName" required><br>
 
         <!-- Submit Button -->
-        <input id="select-artist" type="submit" value="GO!">
+        <input id="submit" type="submit" value="GO!">
     </form>
 
     <!-- Below is Add Employee Form -->
@@ -130,11 +132,10 @@
         </div>
       </div>
     </div>
-
   </div> -->
 
     <!-- Script -->
-    <script src="logic.js"></script>
+    <script src="assets/JavaScript/logic.js"></script>
 
 </body>
 
