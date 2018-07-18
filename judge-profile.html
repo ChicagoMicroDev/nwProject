@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Rate Your Judge</title>
+
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+    <!-- Bootstrap CDN-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <!--reCaptcha-->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
+    <!-- Firebase Reference -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <br>
+
+        <!-- Jumbotron Title -->
+        <div style="background:black; color:white" class="jumbotron">
+            <h1 class="text-center">Rate your Judge</h1>
+            <h3 class="text-center">The Best way to Show your Hatred for the Judges</h3>
+        </div>
+        <!--Judge Profile Card-->
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title" id="judge-heading">Judge Name Goes Here</h5>
+                        <h6 id="division-sub-heading">Division goes Here</h6>
+                        <h6 id="location-sub-heading">Location goes Here</h6>
+                        <p class="card-text" id="judge-bio">
+                            <strong>Bio:</strong>
+                        </p>
+                        <p>Now that there is the Tec-9, a crappy spray gun from South Miami. This gun is advertised as the most
+                            popular gun in American crime. Do you believe that shit? It actually says that in the little
+                            book that comes with it: the most popular gun in American crime. Like they're actually proud
+                            of that shit. </p>
+                        <a href="#" class="btn btn-dark">Back</a>
+                        <a href="#" class="btn btn-dark" id="comment-button">Comment</a>
+                    </div>
+                </div>
+
+            </div>
+            <!--Comments Populated from Firebase-->
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="text-center">What People Say About This Judge</h5>
+                        <div id="comment-display">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Comment Form That Toggles OFF/ON-->
+        <div class="row">
+            <div class="col-sm-6">
+
+                <div class="card" id="comment-form">
+                    <div class="container">
+                        <form role="form">
+                            <div class="form-group row">
+                                <label for="name-input">Judge Name:</label>
+                                <input class="form-control" id="name-input" type="text" required>
+                            </div>
+                            <div class="form-group row">
+                                <label for="division-input">Division:</label>
+                                <input class="form-control" id="division-input" type="text" required>
+                            </div>
+                            <div class="form-group row">
+                                <label for="location-input">Location:</label>
+                                <input class="form-control" id="location-input" type="text" required>
+                            </div>
+                            <div class="form-group row">
+                                <label for="location-input">User Name (Optional):</label>
+                                <input class="form-control" id="username-input" type="text">
+                            </div>
+                            <div class="form-group row">
+                                <label for="rating-input">Give an overall rating for this judge:&ensp;</label>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                                    <label class="form-check-label" for="exampleRadios1">
+                                        Positive&ensp;
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                                    <label class="form-check-label" for="exampleRadios2">
+                                        Negative
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="comment-input">Leave your comment</label>
+                                <textarea class="form-control" id="comment-input" rows="5" required></textarea>
+                            </div>
+                            <div class="g-recaptcha" data-sitekey="6LdcgmQUAAAAAPAnsj_wP7Irtz15TpOgJUnf9Zlf"></div>
+                            <button class="btn btn-dark" id="submit-comment" type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <script>
+
+
+
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyDXxgjCLsSBew-MUv45cjILMQ1euu6kMn8",
+            authDomain: "projectnw-c2a39.firebaseapp.com",
+            databaseURL: "https://projectnw-c2a39.firebaseio.com",
+            projectId: "projectnw-c2a39",
+            storageBucket: "projectnw-c2a39.appspot.com",
+            messagingSenderId: "893943462331"
+        };
+        firebase.initializeApp(config);
+        var database = firebase.database();
+
+        $("#submit-comment").on("click", function (event) {
+            event.preventDefault();
+
+            // Get the input values
+            judgeName = $("#name-input").val().trim();
+            division = $("#division-input").val().trim();
+            location = $("#location-input").val().trim();
+            userName = $("#username-input").val().trim();
+            comment = $("#comment-input").val().trim();
+
+        });
+
+        //Document Ready
+        $(function () {
+
+            //Comment Form Slide Toggle Function
+            var commentToggle =
+                $("#comment-form").hide();
+            $("#comment-button").click(function () {
+                $("#comment-form").slideToggle("fast");
+            });
+        });
+
+    </script>
+    <!-- <script src="logic.js"></script> -->
+</body>
+
+</html>

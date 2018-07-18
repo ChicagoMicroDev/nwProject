@@ -9,6 +9,20 @@ var config = {
 };
 firebase.initializeApp(config);
 
+$.ajax({
+    url: "https://datacatalog.cookcountyil.gov/resource/69z9-nyig.json",
+    type: "GET",
+    data: {
+        "$limit" : 5000,
+        "$$app_token" : "z19GcEXHUsdQi8X7j8doySfMi"
+    }
+}).done(function(data) {
+    // alert("Retrieved " + data.length + " records from the dataset!");
+    console.log(data);
+    console.log(data.last_name[0]);
+});
+
+
 // A function that does an AJAX call
 function judgesInfo(firstName, lastName) {
     $.ajax({
@@ -54,3 +68,4 @@ $("#submit").on("click", function(event) {
 
     judgesInfo(firstName, lastName);
 })
+
