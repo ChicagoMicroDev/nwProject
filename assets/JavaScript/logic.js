@@ -16,6 +16,7 @@ $.ajax({
         "$$app_token" : "z19GcEXHUsdQi8X7j8doySfMi"
     }
 }).done(function(data) {
-    alert("Retrieved " + data.length + " records from the dataset!");
+    // alert("Retrieved " + data.length + " records from the dataset!");
     console.log(data);
+    console.log(data.last_name[0]);
 });
